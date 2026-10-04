@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>شريف | تصميم وتطوير مواقع</title>
+
+  <style>
+    :root {
+      --yellow: #ffd400;
+      --black: #0b0b0b;
+      --white: #ffffff;
+      --gray: #e8e8e8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header */
+    header {
+      background: var(--black);
+      color: var(--white);
+      padding: 18px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 4px solid var(--yellow);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--yellow);
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      font-size: 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--yellow);
+    }
+
+    /* Pages */
+    .page {
+      display: none;
+      min-height: calc(100vh - 82px);
+      animation: fade 0.5s ease;
+    }
+
+    .page.active-page {
+      display: block;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Home */
+    .hero {
+      min-height: calc(100vh - 82px);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 40px;
+      padding: 70px 8%;
+      background:
+        linear-gradient(135deg, transparent 75%, var(--yellow) 75%);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 900;
+      padding: 9px 18px;
+      margin-bottom: 20px;
+      transform: rotate(-2deg);
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 1.1;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--yellow);
+      background: var(--black);
+      padding: 0 10px;
+    }
+
+    .hero p {
+      max-width: 560px;
+      font-size: 18px;
+      line-height: 1.9;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      font-weight: 900;
+      border: 2px solid var(--black);
+      transition: 0.25s;
+      cursor: pointer;
+    }
+
+    .btn-yellow {
+      background: var(--yellow);
+    }
+
+    .btn-black {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn:hover {
+      transform: translate(-5px, -5px);
+      box-shadow: 6px 6px 0 var(--black);
+    }
+
+    .hero-card {
+      background: var(--black);
+      color: var(--white);
+      padding: 35px;
+      border: 8px solid var(--yellow);
+      box-shadow: 15px 15px 0 #ddd;
+    }
+
+    .hero-card .code {
+      color: var(--yellow);
+      font-size: 45px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero-card h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .hero-card p {
+      color: #ddd;
+      line-height: 1.8;
+    }
+
+    /* Common */
+    .section {
+      padding: 75px 8%;
+    }
+
+    .section-title {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .section-title span {
+      color: var(--yellow);
+      background: var(--black);
+      padding: 2px 10px;
+    }
+
+    .section-subtitle {
+      color: #555;
+      margin-bottom: 40px;
+      font-size: 17px;
+    }
+
+    /* Services */
+    .services {
+      background: #f5f5f5;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 3px solid var(--black);
+      padding: 28px;
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      background: var(--yellow);
+      transform: translateY(-8px);
+      box-shadow: 8px 8px 0 var(--black);
+    }
+
+    .service-number {
+      color: var(--yellow);
+      -webkit-text-stroke: 1px var(--black);
+      font-size: 45px;
+      font-weight: 900;
+    }
+
+    .service-card h3 {
+      font-size: 22px;
+      margin: 12px 0;
+    }
+
+    .service-card p {
+      color: #444;
+      line-height: 1.8;
+    }
+
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .work-card {
+      min-height: 260px;
+      background: var(--black);
+      color: var(--white);
+      padding: 25px;
+      border-bottom: 8px solid var(--yellow);
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      transition: 0.3s;
+    }
+
+    .work-card:nth-child(2) {
+      background: var(--yellow);
+      color: var(--black);
+      border-bottom-color: var(--black);
+    }
+
+    .work-card:nth-child(3) {
+      background: var(--white);
+      color: var(--black);
+      border: 3px solid var(--black);
+      border-bottom: 8px solid var(--yellow);
+    }
+
+    .work-card:hover {
+      transform: scale(1.03);
+    }
+
+    .work-card small {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .work-card h3 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    /* Contact */
+    .contact-wrap {
+      background: var(--black);
+      color: var(--white);
+      padding: 70px 8%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .contact-wrap h2 {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .contact-wrap h2 span {
+      color: var(--yellow);
+    }
+
+    .contact-wrap p {
+      line-height: 1.9;
+      color: #ddd;
+      font-size: 17px;
+    }
+
+    .phone-box {
+      background: var(--yellow);
+      color: var(--black);
+      padding: 30px;
+      text-align: center;
+      border: 4px solid var(--white);
+    }
+
+    .phone-box p {
+      color: var(--black);
+      font-weight: bold;
+    }
+
+    .phone-box a {
+      display: block;
+      font-size: 29px;
+      font-weight: 900;
+      margin-top: 10px;
+      direction: ltr;
+    }
+
+    footer {
+      background: var(--yellow);
+      color: var(--black);
+      text-align: center;
+      padding: 18px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        padding: 15px 5%;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+
+      .hero,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 50px 7%;
+      }
+
+      .cards,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="#" class="logo" onclick="showPage('home')">شريف<span>.</span></a>
+
+    <nav>
+      <a href="#" class="nav-link active" onclick="showPage('home', this)">الرئيسية</a>
+      <a href="#" class="nav-link" onclick="showPage('services', this)">الخدمات</a>
+      <a href="#" class="nav-link" onclick="showPage('portfolio', this)">الأعمال</a>
+      <a href="#" class="nav-link" onclick="showPage('contact', this)">تواصل</a>
+    </nav>
+  </header>
+
+  <!-- الصفحة الرئيسية -->
+  <main id="home" class="page active-page">
+    <section class="hero">
+      <div>
+        <div class="hero-tag">مطور مواقع ويب</div>
+        <h1>موقعك يستحق أن يكون <span>مميز.</span></h1>
+        <p>
+          أنا شريف، أصمم وأطوّر مواقع حديثة وسريعة تساعدك تعرض مشروعك بشكل احترافي وتوصل لعملائك بثقة.
+        </p>
+
+        <div class="buttons">
+          <a href="#" class="btn btn-yellow" onclick="showPage('contact')">ابدأ مشروعك الآن</a>
+          <a href="#" class="btn btn-black" onclick="showPage('portfolio')">شوف أعمالي</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="code">&lt;/&gt;</div>
+        <h2>تصميم مختلف<br />لمشروعك.</h2>
+        <p>
+          مواقع عصرية، متجاوبة مع الموبايل، وسهلة الاستخدام — مصممة لتظهر فكرتك بأفضل شكل.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- صفحة الخدمات -->
+  <main id="services" class="page">
+    <section class="section services">
+      <h2 class="section-title">خدماتي <span>لك</span></h2>
+      <p class="section-subtitle">كل ما تحتاجه علشان تبدأ حضور قوي على الإنترنت.</p>
+
+      <div class="cards">
+        <div class="service-card">
+          <div class="service-number">01</div>
+          <h3>تصميم مواقع</h3>
+          <p>تصميم احترافي وجذاب يناسب نشاطك ويعكس هوية مشروعك.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">02</div>
+          <h3>تطوير مواقع</h3>
+          <p>موقع سريع ومتجاوب ويعمل بكفاءة على الموبايل والكمبيوتر.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">03</div>
+          <h3>صفحات هبوط</h3>
+          <p>صفحات تسويقية تساعدك تحصل على عملاء أكثر وتحول الزوار لعملاء.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- صفحة الأعمال -->
+  <main id="portfolio" class="page">
+    <section class="section">
+      <h2 class="section-title">أعمال <span>مختارة</span></h2>
+      <p class="section-subtitle">نماذج لأفكار ومشاريع يمكن تنفيذها بشكل احترافي.</p>
+
+      <div class="portfolio-grid">
+        <div class="work-card">
+          <small>موقع تجاري</small>
+          <h3>متجر إلكتروني</h3>
+          <p>عرض منتجات وتجربة شراء بسيطة.</p>
+        </div>
+
+        <div class="work-card">
+          <small>هوية شخصية</small>
+          <h3>Portfolio</h3>
+          <p>موقع يعرض أعمالك وخدماتك.</p>
+        </div>
+
+        <div class="work-card">
+          <small>شركة خدمات</small>
+          <h3>موقع أعمال</h3>
+          <p>تعريف واضح بالشركة وخدماتها.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- صفحة التواصل -->
+  <main id="contact" class="page">
+    <section class="contact-wrap">
+      <div>
+        <h2>جاهز نبدأ <span>مشروعك؟</span></h2>
+        <p>
+          لو عندك فكرة موقع أو مشروع وعايز تظهره بشكل مختلف واحترافي، كلمني الآن ونبدأ نحول فكرتك لموقع حقيقي.
+        </p>
+      </div>
+
+      <div class="phone-box">
+        <p>اتصل أو ابعت واتساب</p>
+        <a href="tel:01028142330">01028142330</a>
+        <br />
+        <a class="btn btn-black" href="https://wa.me/201028142330" target="_blank">
+          تواصل عبر واتساب
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 شريف — تصميم وتطوير مواقع ويب
+  </footer>
+
+  <script>
+    const pageIds = ["home", "services", "portfolio", "contact"];
+    const pages = pageIds.map((pageId) => document.getElementById(pageId));
+    const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+    let activePage = pages.find((page) => page.classList.contains("active-page"));
+    let activeNavLink = navLinks.find((link) => link.classList.contains("active"));
+
+    function showPage(pageId, clickedLink) {
+      const pageIndex = pageIds.indexOf(pageId);
+      const nextPage = pages[pageIndex];
+      if (!nextPage) return;
+
+      if (activePage !== nextPage) {
+        activePage.classList.remove("active-page");
+        nextPage.classList.add("active-page");
+        activePage = nextPage;
+      }
+
+      const nextNavLink = clickedLink || navLinks[pageIndex];
+      if (activeNavLink !== nextNavLink) {
+        activeNavLink.classList.remove("active");
+        nextNavLink.classList.add("active");
+        activeNavLink = nextNavLink;
+      }
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
